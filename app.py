@@ -22,7 +22,7 @@ def get_db():
 class TopBabyAll(Resource):
     @api.response(200, 'SUCCESSFUL: Contents successfully loaded')
     @api.response(204, 'NO CONTENT: No content in database')
-    @api.doc(description='Retrieving all records from the database for all suburbs')
+    @api.doc(description='Retrieving all records from the database for all suburbs.')
     def get(self):
         db = get_db()
         details_cur = db.execute('select YEAR, LOCALITY, SUBURB, STATE, POSTCODE, COUNT from NSW_BIRTH_RATE')
@@ -48,7 +48,7 @@ class TopBabyAll(Resource):
 class TopBabySuburb(Resource):
     @api.response(200, 'SUCCESSFUL: Contents successfully loaded')
     @api.response(204, 'NO CONTENT: No content in database')
-    @api.doc(description='Retrieving all records from the database for one suburb')
+    @api.doc(description='Retrieving all records from the database for one suburb.')
     def get(self, SUBURB):
 
         db = get_db()
