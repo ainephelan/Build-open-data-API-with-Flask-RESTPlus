@@ -20,8 +20,8 @@ def get_db():
 
 @api.route('/all')
 class TopBabyAll(Resource):
-    @api.response(204, 'NO CONTENT: No content in database')
     @api.response(200, 'SUCCESSFUL: Contents successfully loaded')
+    @api.response(204, 'NO CONTENT: No content in database')
     @api.doc(description='Retrieving all records from the database for all suburbs')
     def get(self):
         db = get_db()
@@ -46,8 +46,8 @@ class TopBabyAll(Resource):
 
 @api.route('/all/<string:SUBURB>', methods=['GET'])
 class TopBabySuburb(Resource):
-    @api.response(204, 'NO CONTENT: No content in database')
     @api.response(200, 'SUCCESSFUL: Contents successfully loaded')
+    @api.response(204, 'NO CONTENT: No content in database')
     @api.doc(description='Retrieving all records from the database for one suburb')
     def get(self, SUBURB):
         db = get_db()
