@@ -1,6 +1,7 @@
 from flask import Flask, g, jsonify, make_response
 from flask_restplus import Api, Resource, fields
 import sqlite3
+from os import path
 
 app = Flask(__name__)
 api = Api(app, version='1.0', title='Data Service for NSW birth rate information by suburb',
@@ -8,8 +9,9 @@ api = Api(app, version='1.0', title='Data Service for NSW birth rate information
           )
 
 #Database helper
+ROOT = path.dirname(path.realpath(__file__))
 def connect_db():
-    sql = sqlite3.connect('NSW_BIRTH_RATE.sqlite')
+    sql = sqlite3.connect(path.join(ROOT, "NSW_BIRTH_RATE.sqlite"))
     sql.row_factory = sqlite3.Row
     return sql
 
