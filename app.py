@@ -3,8 +3,8 @@ from flask_restplus import Api, Resource, fields
 import sqlite3
 
 app = Flask(__name__)
-api = Api(app, version='1.0', title='Data Service for NSW birth rate per suburb',
-          description='This is a Flask-Restplus data service that allows a client to consume APIs related to NSW birth rate information per suburb',
+api = Api(app, version='1.0', title='Data Service for NSW birth rate information by suburb',
+          description='This is a Flask-Restplus data service that allows a client to consume APIs related to NSW birth rate information by suburb.',
           )
 
 #Database helper
@@ -50,7 +50,6 @@ class TopBabySuburb(Resource):
     @api.response(204, 'NO CONTENT: No content in database')
     @api.doc(description='Retrieving all records from the database for one suburb.')
     def get(self, SUBURB):
-
         db = get_db()
         details_cur = db.execute(
             'select YEAR, LOCALITY, SUBURB, STATE, POSTCODE, COUNT from NSW_BIRTH_RATE where SUBURB = ? COLLATE NOCASE', [SUBURB])
